@@ -37,6 +37,14 @@ const FORMAS_DE_ENVIO = [
     "Retiro en tienda"
 ];
 
+const validarMensaje = (mensaje: string) => {
+    const msg = parseInt(mensaje);
+
+}
+
 client.on("message", async (msg: Message) => {
     const mensaje = msg.body;
-})
+
+    // ¿Realizo el pedido?
+    const realizoElPedido = mensaje === "1";
+});
