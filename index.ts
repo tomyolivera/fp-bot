@@ -16,6 +16,8 @@ client.on("ready", () => {
  * 
  */
 
+type TOpciones = "Info general" | "Formas de pago" | "Tienda" | "Como Comprar" | "Talles" | "Otro";
+
 const INFO_GENERAL = "";
 
 const FORMAS_DE_PAGO = [
@@ -47,4 +49,13 @@ client.on("message", async (msg: Message) => {
 
     // ¿Realizo el pedido?
     const realizoElPedido = mensaje === "1";
+
+    if(realizoElPedido){
+
+    } else {
+        const opcionElegida = mensaje as TOpciones;
+        if(opcionElegida === "Tienda"){
+            await msg.reply(LINK_TIENDA);
+        }
+    }
 });
