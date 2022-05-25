@@ -43,7 +43,6 @@ const FORMAS_DE_ENVIO = [
 
 const validarMensaje = (mensaje: string) => {
     const msg = parseInt(mensaje);
-
 }
 
 let state = {
