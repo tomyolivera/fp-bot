@@ -16,7 +16,9 @@ client.on("ready", () => {
  * 
  */
 
-type TOpciones = "Info general" | "Formas de pago" | "Tienda" | "Como Comprar" | "Talles" | "Otro";
+type TOpciones = "Info general" | "Formas de pago" | "Tienda" | "Como Comprar" | "Talles" | "Envios" | "Otro";
+
+const MENSAJE_BIENVENIDA = "Hola, soy un bot de prueba, ¿en qué te puedo ayudar?";
 
 const INFO_GENERAL = "";
 
@@ -44,8 +46,28 @@ const validarMensaje = (mensaje: string) => {
 
 }
 
+let state = {
+    opciones: [
+        "Info general",
+        "Formas de pago",
+        "Tienda",
+        "Como Comprar",
+        "Talles",
+        "Envios",
+        "Otro"
+    ],
+    opcionActual: 0
+}
+
 client.on("message", async (msg: Message) => {
     const mensaje = msg.body;
+
+    // Validar si es el primer mensaje que manda
+    const esPrimerMensaje = state.opcionActual === 0;
+    if(esPrimerMensaje) {
+        // Enviar mensaje de bienvenida
+        await msg.reply(MENSAJE_BIENVENIDA);
+    }
 
     // ¿Realizo el pedido?
     const realizoElPedido = mensaje === "1";
@@ -53,9 +75,6 @@ client.on("message", async (msg: Message) => {
     if(realizoElPedido){
 
     } else {
-        const opcionElegida = mensaje as TOpciones;
-        if(opcionElegida === "Tienda"){
-            await msg.reply(LINK_TIENDA);
-        }
+        // Enviar opciones
     }
-});
+}); 
